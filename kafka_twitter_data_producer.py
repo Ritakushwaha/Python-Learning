@@ -7,7 +7,7 @@ Created on Wed Dec 29 15:04:38 2021
 """
 import tweepy
 import time
-from kafka import KafkaConsumer, KafkaProducer
+from kafka import KafkaProducer
 
 # Twitter API's Key
 
@@ -42,9 +42,9 @@ producer = KafkaProducer(bootstrap_servers=['localhost:9092'], api_version=(0,11
 topic_name = 'trump'
 
 # Get data from Twitter
-from pprint import pprint
+
 def get_twitter_data():
-    res = api.search_tweets('#omicron')
+    res = api.search_tweets('omicron')
     for i in res:
         date = str(i.created_at)
         
@@ -64,6 +64,13 @@ def get_twitter_data():
         record += '\n'
         record += 'Text:'+str(i.text[:100])
         record += '\n\n'
+        
+        '''record = dict()
+        record['Created_date']=str(date[:16])
+        record['Username']=str(i.user.screen_name)
+        record['User_location']=str(i.user.location)
+        record['Hashtags']=str(hashtext)
+        record['Text']=str(i.text[:100])'''
 
         producer.send(topic_name, str.encode(record))
         
@@ -75,3 +82,5 @@ def periodic_work(interval):
         time.sleep(interval)
         
 periodic_work(60*0.1) # get data every couple of minutes
+
+

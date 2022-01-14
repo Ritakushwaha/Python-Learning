@@ -7,7 +7,9 @@ Created on Wed Dec 29 15:04:38 2021
 """
 import tweepy
 import time
-from kafka import KafkaConsumer, KafkaProducer
+from kafka import KafkaProducer
+import json
+from bson import json_util
 
 # Twitter API's Key
 
@@ -42,7 +44,7 @@ producer = KafkaProducer(bootstrap_servers=['localhost:9092'], api_version=(0,11
 topic_name = 'trump'
 
 # Get data from Twitter
-from pprint import pprint
+
 def get_twitter_data():
     res = api.search_tweets('#omicron')
     for i in res:
@@ -53,7 +55,7 @@ def get_twitter_data():
         for j in range(0, len(hashtags)):
             hashtext.append(hashtags[j]['text'])
         
-        record = ""
+        '''record = ""
         record += 'Created_date:'+str(date[:16])
         record += '\n'
         record += 'Username:'+str(i.user.screen_name)
@@ -64,8 +66,18 @@ def get_twitter_data():
         record += '\n'
         record += 'Text:'+str(i.text[:100])
         record += '\n\n'
+        '''
+        
+        record = dict()
+        record['Created_date']=str(date[:16])
+        record['Username']=str(i.user.screen_name)
+        record['User_location']=str(i.user.location)
+        record['Hashtags']=str(hashtext)
+        record['Text']=str(i.text[:100])
+        
+        
 
-        producer.send(topic_name, str.encode(record))
+        producer.send(topic_name, json.dumps(record, default=json_util.default).encode('utf-8'))
         
 
 def periodic_work(interval):
@@ -75,3 +87,5 @@ def periodic_work(interval):
         time.sleep(interval)
         
 periodic_work(60*0.1) # get data every couple of minutes
+
+
