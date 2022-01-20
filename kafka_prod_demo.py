@@ -77,7 +77,7 @@ def get_twitter_data():
         
         
 
-        producer.send(topic_name, json.dumps(record, default=json_util.default).encode('utf-8'))
+        producer.send(topic_name, json.dumps(record, ).encode('utf-8'))
         
 
 def periodic_work(interval):
