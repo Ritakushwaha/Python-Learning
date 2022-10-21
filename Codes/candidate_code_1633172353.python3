@@ -1,0 +1,11 @@
+''' Read input from STDIN. Print your output to STDOUT '''
+    #Use input() to read input from STDIN and use print to write your output to STDOUT
+
+num = int(input())
+
+def fac(num):
+    if num>0:
+        return 1 if (num==0 or num==1) else num*fac(num-1)
+
+print(fac(num))
+
