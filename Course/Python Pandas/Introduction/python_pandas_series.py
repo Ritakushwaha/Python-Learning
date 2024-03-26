@@ -48,3 +48,14 @@ print(series.loc['C']) #provide label
 ## Indexing a Series using .iloc[ ]
 print("\nIndexing using .iloc[]:")
 print(series[2:4])
+
+## Binary Operation on Series
+data = pd.Series([5, 2, 3,7], index=['a', 'b', 'c', 'd'])
+data1 = pd.Series([1, 6, 4, 9], index=['a', 'b', 'd', 'e'])
+# add two series using .add() function
+res = data.add(data1, fill_value=0)
+print(res)
+# subtract two series using .sub() function
+diff = data.sub(data1)
+print(diff)
+
