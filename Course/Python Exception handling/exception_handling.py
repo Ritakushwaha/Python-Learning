@@ -15,21 +15,22 @@ Errors-
     ImportError
 '''
 
-# ## Syntax Error
-# x = 4
-# if(x<5) #SyntaxError: expected ':'
-# print(f"{x} is less than 5")
+### Examples - 
+'''## Syntax Error
+x = 4
+if(x<5) #SyntaxError: expected ':'
+print(f"{x} is less than 5")
 
-# ## ZeroDivisionError
-# a =10
-# b = a/0 #ZeroDivisionError: division by zero
-# print(b)
+## ZeroDivisionError
+a =10
+b = a/0 #ZeroDivisionError: division by zero
+print(b)
 
-# ## TypeError
-# x = 5
-# y = 'Rita'
-# z = x+y # TypeError: unsupported operand type(s) for +: 'int' and 'str'
-
+## TypeError
+x = 5
+y = 'Rita'
+z = x+y # TypeError: unsupported operand type(s) for +: 'int' and 'str'
+'''
 ## use try except block to handle the exception
 x = 5
 y = 6
