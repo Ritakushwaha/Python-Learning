@@ -4,3 +4,6 @@
 [submodule "Excel_Automation"]
 	path = Excel_Automation
 	url = https://github.com/Ritakushwaha/Excel_Automation.git
+[submodule "Fun_Friday_Games"]
+	path = Fun_Friday_Games
+	url = https://github.com/Ritakushwaha/Fun_Friday_Games.git
