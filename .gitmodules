@@ -1,3 +1,6 @@
 [submodule "Data-Analysis-with-Python"]
 	path = Data-Analysis-with-Python
 	url = https://github.com/Ritakushwaha/Data-Analysis-with-Python.git
+[submodule "Excel_Automation"]
+	path = Excel_Automation
+	url = https://github.com/Ritakushwaha/Excel_Automation.git
