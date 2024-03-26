@@ -25,6 +25,7 @@ data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
 
 # Create a DataFrame from the dictionary of ndarray/list
 df = pd.DataFrame(data)
+print("DataFrame:")
 print(df)
 
 # Missing data
@@ -34,13 +35,30 @@ data2 = {'Name': ['Alice', 'Bob', np.nan, 'David'],
 df2 = pd.DataFrame(data2)
 
 # Check for missing values
+print("\nMissing values in df2:")
 print(df2.isnull())
 
 # Fill missing values
 df3 = df2.fillna('UNKNOWN')
+print("\nDataFrame with missing values filled:")
 print(df3)
 
 # Dropping missing values
 df4 = df2.dropna()
+print("\nDataFrame after dropping rows with missing values:")
 print(df4)
 
+## Iterating over rows
+print("\nIterating over rows in df:")
+for index, row in df.iterrows():
+    print("Index:", index)
+    print("Row:", row)
+    print()
+
+
+## Iterating over Columns
+columns = list(df)
+print("\nIterating over columns in df:")
+for column in df:
+    print("Column:", column)
+    print("Value at index 2:", df[column][2])
