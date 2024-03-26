@@ -14,17 +14,33 @@ Data Alignment: Data is automatically aligned along the row and column labels wh
 Rich Functionality: Pandas provides a wide range of functions and methods for data manipulation, cleaning, aggregation, reshaping, and analysis.
 '''
 
-# Create a pandas DataFrame:
+## Create a pandas DataFrame:
 
+import numpy as np
 import pandas as pd
 
-# Create a dictionary of data
 data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
         'Age': [25, 30, 35, 40],
         'City': ['New York', 'Los Angeles', 'Chicago', 'Houston']}
 
-# Create a DataFrame from the dictionary
+# Create a DataFrame from the dictionary of ndarray/list
 df = pd.DataFrame(data)
-
-# Display the DataFrame
 print(df)
+
+# Missing data
+data2 = {'Name': ['Alice', 'Bob', np.nan, 'David'],
+        'Age': [25, np.nan, 35, 40],
+        'City': ['New York', 'Los Angeles', 'Chicago', np.nan]}
+df2 = pd.DataFrame(data2)
+
+# Check for missing values
+print(df2.isnull())
+
+# Fill missing values
+df3 = df2.fillna('UNKNOWN')
+print(df3)
+
+# Dropping missing values
+df4 = df2.dropna()
+print(df4)
+
